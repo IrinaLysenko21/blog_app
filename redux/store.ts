@@ -8,11 +8,11 @@ const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = composeWithDevTools(applyMiddleware(sagaMiddleware));
 
-const initStore = (): any => {
+const initialStore = (): any => {
   const store = createStore(rootReducer, enhancer);
   sagaMiddleware.run(rootSaga);
 
   return store;
 };
 
-export default initStore;
+export default initialStore;

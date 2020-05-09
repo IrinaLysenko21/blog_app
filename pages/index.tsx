@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
 import { fetchPosts } from '../redux/actions';
+import PageWrapper from '../components/PageWrapper/PageWrapper';
+import PostsList from '../components/PostsList/PostsList';
 
 const LatestPosts = () => {
   const posts = useSelector((state) => state.posts);
@@ -12,17 +13,9 @@ const LatestPosts = () => {
   }, [dispatch]);
 
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-          <Link href="/posts/[id]" as={`/posts/${post.id}`}>
-            <a>View</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <PageWrapper title="Latest posts">
+      <PostsList posts={posts} />
+    </PageWrapper>
   );
 };
 

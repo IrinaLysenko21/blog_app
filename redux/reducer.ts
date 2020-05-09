@@ -17,7 +17,7 @@ const postsReducer = (state = [], { type, payload }) => {
   }
 };
 
-const postReducer = (state = null, { type, payload }) => {
+const openedPostReducer = (state = null, { type, payload }) => {
   switch (type) {
     case types.FETCH_POST_SUCCESS:
       return payload.post;
@@ -72,7 +72,7 @@ const errorReducer = (state = null, { type, payload }) => {
 
 const rootReducer = combineReducers({
   posts: postsReducer,
-  openedPost: postReducer,
+  openedPost: openedPostReducer,
   isLoading: loaderReducer,
   error: errorReducer,
 });
