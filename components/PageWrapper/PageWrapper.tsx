@@ -1,7 +1,12 @@
 import React from 'react';
-import { Wrapper, Title } from './styles';
+import { Wrapper, Title } from './PageWrapperStyles';
 
-const PageWrapper = ({ title, children }) => {
+interface PageWrapperProps {
+  title?: string;
+  children: React.ReactNode;
+}
+
+const PageWrapper = ({ title, children }: PageWrapperProps): JSX.Element => {
   return (
     <Wrapper>
       <Title>{title}</Title>

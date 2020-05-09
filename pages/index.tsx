@@ -4,7 +4,7 @@ import { fetchPosts } from '../redux/actions';
 import PageWrapper from '../components/PageWrapper/PageWrapper';
 import PostsList from '../components/PostsList/PostsList';
 
-const LatestPosts = () => {
+const LatestPosts = (): JSX.Element => {
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
@@ -12,11 +12,7 @@ const LatestPosts = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  return (
-    <PageWrapper title="Latest posts">
-      <PostsList posts={posts} />
-    </PageWrapper>
-  );
+  return <PageWrapper title="Latest posts">{posts.length > 0 && <PostsList posts={posts} />}</PageWrapper>;
 };
 
 export default LatestPosts;

@@ -1,19 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
+import { StyledPostsList, Post, PostLink } from './PostsListStyles';
+import { PostInterface } from '../../redux/types';
 
-const PostsList = ({ posts }) => {
+interface PostsListProps {
+  posts: PostInterface[];
+}
+
+const PostsList = ({ posts }: PostsListProps): JSX.Element => {
   return (
-    <ul>
+    <StyledPostsList>
       {posts.map((post) => (
-        <li key={post.id}>
+        <Post key={post.id}>
           <h3>{post.title}</h3>
           <p>{post.body}</p>
           <Link href="/posts/[id]" as={`/posts/${post.id}`}>
-            <a>View</a>
+            <PostLink>View</PostLink>
           </Link>
-        </li>
+        </Post>
       ))}
-    </ul>
+    </StyledPostsList>
   );
 };
 

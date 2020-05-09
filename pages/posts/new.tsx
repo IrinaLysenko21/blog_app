@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { createPost } from '../../redux/actions';
+import React from 'react';
+import PageWrapper from '../../components/PageWrapper/PageWrapper';
+import CreatePostForm from '../../components/CreatePostForm/CreatePostForm';
 
-const NewPostPage = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(createPost());
-  // }, [dispatch]);
-
-  return <div>New post</div>;
+const NewPostPage = (): JSX.Element => {
+  return (
+    <PageWrapper>
+      <CreatePostForm />
+    </PageWrapper>
+  );
 };
 
 export default NewPostPage;

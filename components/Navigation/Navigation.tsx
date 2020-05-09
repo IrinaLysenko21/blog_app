@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Wrapper, Logo, NavList, NavListItem } from './styles';
+import { Wrapper, Logo, NavList, NavListItem } from './NavigationStyles';
 
 const Navbar = () => {
   return (

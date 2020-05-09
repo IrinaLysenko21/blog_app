@@ -24,6 +24,19 @@ function* getOnePostWorker(action) {
   }
 }
 
+function* createPostWorker(action) {
+  try {
+    yield put({ type: types.CREATE_POST_START });
+    const payload = yield call(API.createPost, action.payload.post);
+    console.log(payload);
+
+    yield put({ type: types.CREATE_POST_SUCCESS, payload: { post: payload } });
+  } catch (err) {
+    yield put({ type: types.CREATE_POST_ERROR, payload: { error: err } });
+    console.log(err);
+  }
+}
+
 function* getPostsWatcher() {
   yield takeEvery(types.FETCH_POSTS, getPostsWorker);
 }
@@ -32,6 +45,10 @@ function* getOnePostWatcher() {
   yield takeEvery(types.FETCH_POST, getOnePostWorker);
 }
 
+function* createPostWatcher() {
+  yield takeEvery(types.CREATE_POST, createPostWorker);
+}
+
 export default function* rootSaga() {
-  yield all([getPostsWatcher(), getOnePostWatcher()]);
+  yield all([getPostsWatcher(), getOnePostWatcher(), createPostWatcher()]);
 }

@@ -11,6 +11,9 @@ export const fetchOnePost = (id) => ({
   },
 });
 
-export const createPost = () => ({
+export const createPost = (post) => ({
   type: CREATE_POST,
+  payload: {
+    post,
+  },
 });

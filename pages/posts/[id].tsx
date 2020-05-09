@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOnePost } from '../../redux/actions';
+import PageWrapper from '../../components/PageWrapper/PageWrapper';
+import Post from '../../components/Post/Post';
 
-const PostPage = () => {
+const PostPage = (): JSX.Element => {
   const router = useRouter();
   const postId = router.query.id;
-  console.log(postId);
 
   const dispatch = useDispatch();
 
@@ -15,26 +16,8 @@ const PostPage = () => {
   }, [dispatch, postId]);
 
   const post = useSelector((state) => state.openedPost);
-  console.log('page: ', post);
-  if (post) {
-    return (
-      <div>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
-        {post.comments > 0 ? (
-          <ul>
-            {post.comments.map((comment) => (
-              <li key={comment.id}>{comment.body}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No comments for this post</p>
-        )}
-      </div>
-    );
-  } else {
-    return <p>Hi</p>;
-  }
+
+  return <PageWrapper>{post && <Post post={post} />}</PageWrapper>;
 };
 
 export default PostPage;

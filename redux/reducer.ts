@@ -23,7 +23,7 @@ const openedPostReducer = (state = null, { type, payload }) => {
       return payload.post;
 
     case types.FETCH_POST_ERROR:
-      return;
+      return state;
 
     default:
       return state;

@@ -6,5 +6,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 0;
+  margin: 0 0 15px;
+  color: #287799;
 `;
