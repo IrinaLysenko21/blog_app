@@ -5,8 +5,15 @@ export const Wrapper = styled.div`
   padding: 20px;
 `;
 
+export const PageHeader = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+`;
+
 export const Title = styled.h2`
-  margin: 0 0 15px;
+  display: inline-block;
+  margin-right: 50px;
   text-align: center;
   color: #287799;
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Loader from '../../components/Loader';
-import { Wrapper, Title } from './PageWrapperStyles';
+import { Wrapper, PageHeader, Title } from './PageWrapperStyles';
 
 interface PageWrapperProps {
   title?: string;
@@ -13,8 +13,10 @@ const PageWrapper = ({ title, children }: PageWrapperProps): JSX.Element => {
 
   return (
     <Wrapper>
-      {isLoading && <Loader />}
-      <Title>{title}</Title>
+      <PageHeader>
+        <Title>{title}</Title>
+        {isLoading && <Loader />}
+      </PageHeader>
       {children}
     </Wrapper>
   );

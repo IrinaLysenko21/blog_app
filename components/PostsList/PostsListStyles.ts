@@ -6,7 +6,7 @@ export const StyledPostsList = styled.ul`
   justify-content: flex-start;
   margin: 0;
   padding: 0;
-  list-style: none;
+  list-style-type: none;
 `;
 
 export const Post = styled.li`
