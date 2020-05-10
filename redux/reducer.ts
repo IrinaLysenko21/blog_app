@@ -16,9 +16,7 @@ const postsReducer = (state = [], action: postsActionType): types.PostType[] => 
   }
 };
 
-type postActionType = types.FetchOnePostSuccessType | types.FetchOnePostErrorType;
-
-const openedPostReducer = (state = null, action: postActionType): types.PostType => {
+const openedPostReducer = (state = null, action): types.PostType => {
   switch (action.type) {
     case types.FETCH_POST_SUCCESS:
       return action.payload.post;
@@ -31,8 +29,8 @@ const openedPostReducer = (state = null, action: postActionType): types.PostType
   }
 };
 
-const loaderReducer = (state = false, { type }) => {
-  switch (type) {
+const loaderReducer = (state = false, action: types.allActionsType): boolean => {
+  switch (action.type) {
     case types.FETCH_POSTS_START:
     case types.FETCH_POST_START:
     case types.CREATE_POST_START:
@@ -51,7 +49,7 @@ const loaderReducer = (state = false, { type }) => {
   }
 };
 
-const errorReducer = (state = null, { type, payload }) => {
+const errorReducer = (state = null, { type, payload }): {} | null => {
   switch (type) {
     case types.FETCH_POSTS_START:
     case types.FETCH_POST_START:

@@ -107,3 +107,14 @@ export interface CreatePostErrorType {
     error: {};
   };
 }
+
+export type allActionsType =
+  | FetchPostsStartType
+  | FetchPostsSuccessType
+  | FetchPostsErrorType
+  | FetchOnePostStartType
+  | FetchOnePostSuccessType
+  | FetchOnePostErrorType
+  | CreatePostStartType
+  | CreatePostSuccessType
+  | CreatePostErrorType;

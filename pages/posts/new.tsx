@@ -1,10 +1,10 @@
 import React from 'react';
-import PageWrapper from '../../components/PageWrapper/PageWrapper';
-import CreatePostForm from '../../components/CreatePostForm/CreatePostForm';
+import PageWrapper from '../../components/PageWrapper';
+import CreatePostForm from '../../components/CreatePostForm';
 
 const NewPostPage = (): JSX.Element => {
   return (
-    <PageWrapper>
+    <PageWrapper title="Create your oun post">
       <CreatePostForm />
     </PageWrapper>
   );

@@ -22,6 +22,8 @@ const CreatePostForm = (): JSX.Element => {
     };
 
     dispatch(createPost(post));
+    setTitle('');
+    setDescription('');
   };
 
   return (

@@ -10,7 +10,6 @@ function* getPostsWorker(): Generator {
     yield put(actions.FetchPostsSuccess(payload));
   } catch (err) {
     yield put(actions.FetchPostsError(err));
-    console.log(err);
   }
 }
 
@@ -21,7 +20,6 @@ function* getOnePostWorker(action): Generator {
     yield put(actions.fetchOnePostSuccess(payload));
   } catch (err) {
     yield put(actions.fetchOnePostError(err));
-    console.log(err);
   }
 }
 
@@ -32,7 +30,6 @@ function* createPostWorker(action): Generator {
     yield put(actions.createPostSuccess());
   } catch (err) {
     yield put(actions.createPostError(err));
-    console.log(err);
   }
 }
 

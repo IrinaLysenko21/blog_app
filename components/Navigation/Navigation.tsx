@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Wrapper, Logo, NavList, NavListItem } from './NavigationStyles';
 
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
   return (
     <Wrapper>
       <Logo>Blog</Logo>
