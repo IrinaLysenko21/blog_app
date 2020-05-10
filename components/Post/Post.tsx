@@ -1,11 +1,11 @@
 import React from 'react';
-import { PostInterface, CommentInterface } from '../../redux/types';
+import { PostType, CommentType } from '../../redux/types';
 
-interface PostProps {
-  post: PostInterface;
+interface PostPropsType {
+  post: PostType;
 }
 
-const Post = ({ post }: PostProps): JSX.Element => {
+const Post = ({ post }: PostPropsType): JSX.Element => {
   return (
     <div>
       <h2>{post.title}</h2>
@@ -14,7 +14,7 @@ const Post = ({ post }: PostProps): JSX.Element => {
         <>
           <h3>Comments</h3>
           <ul>
-            {(post.comments as Array<CommentInterface>).map((comment) => (
+            {(post.comments as Array<CommentType>).map((comment) => (
               <li key={comment.id}>{comment.body}</li>
             ))}
           </ul>

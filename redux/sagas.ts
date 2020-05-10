@@ -1,54 +1,53 @@
 import { all, takeEvery, put, call } from 'redux-saga/effects';
 import * as types from './types';
+import * as actions from '../redux/actions';
 import * as API from '../services/api';
 
-function* getPostsWorker() {
+function* getPostsWorker(): Generator {
   try {
-    yield put({ type: types.FETCH_POSTS_START });
+    yield put(actions.FetchPostsStart());
     const payload = yield call(API.fetchPosts);
-    yield put({ type: types.FETCH_POSTS_SUCCESS, payload: { posts: payload } });
+    yield put(actions.FetchPostsSuccess(payload));
   } catch (err) {
-    yield put({ type: types.FETCH_POSTS_ERROR, payload: { error: err } });
+    yield put(actions.FetchPostsError(err));
     console.log(err);
   }
 }
 
-function* getOnePostWorker(action) {
+function* getOnePostWorker(action): Generator {
   try {
-    yield put({ type: types.FETCH_POST_START });
+    yield put(actions.fetchOnePostStart());
     const payload = yield call(API.fetchPostById, action.payload.id);
-    yield put({ type: types.FETCH_POST_SUCCESS, payload: { post: payload } });
+    yield put(actions.fetchOnePostSuccess(payload));
   } catch (err) {
-    yield put({ type: types.FETCH_POST_ERROR, payload: { error: err } });
+    yield put(actions.fetchOnePostError(err));
     console.log(err);
   }
 }
 
-function* createPostWorker(action) {
+function* createPostWorker(action): Generator {
   try {
-    yield put({ type: types.CREATE_POST_START });
-    const payload = yield call(API.createPost, action.payload.post);
-    console.log(payload);
-
-    yield put({ type: types.CREATE_POST_SUCCESS, payload: { post: payload } });
+    yield put(actions.createPostStart());
+    yield call(API.createPost, action.payload.post);
+    yield put(actions.createPostSuccess());
   } catch (err) {
-    yield put({ type: types.CREATE_POST_ERROR, payload: { error: err } });
+    yield put(actions.createPostError(err));
     console.log(err);
   }
 }
 
-function* getPostsWatcher() {
+function* getPostsWatcher(): Generator {
   yield takeEvery(types.FETCH_POSTS, getPostsWorker);
 }
 
-function* getOnePostWatcher() {
+function* getOnePostWatcher(): Generator {
   yield takeEvery(types.FETCH_POST, getOnePostWorker);
 }
 
-function* createPostWatcher() {
+function* createPostWatcher(): Generator {
   yield takeEvery(types.CREATE_POST, createPostWorker);
 }
 
-export default function* rootSaga() {
+export default function* rootSaga(): Generator {
   yield all([getPostsWatcher(), getOnePostWatcher(), createPostWatcher()]);
 }

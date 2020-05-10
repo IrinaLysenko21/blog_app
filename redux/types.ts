@@ -13,34 +13,97 @@ export const CREATE_POST_START = 'CREATE_POST_START';
 export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
 export const CREATE_POST_ERROR = 'CREATE_POST_ERROR';
 
-export interface CommentInterface {
+export interface CommentType {
   id: number;
   postId: number;
   body: string;
 }
 
-export interface PostInterface {
+export interface PostType {
   id: number;
   title: string;
   body: string;
-  comments?: CommentInterface[] | [];
+  comments?: CommentType[] | [];
 }
 
-export interface StoreInterface {
-  posts: PostInterface[] | [];
+export interface StoreType {
+  posts: PostType[] | [];
+  openedPost: PostType | null;
   isLoading: boolean;
+  error: {} | null;
 }
 
-// export interface FetchPostsInterface {
-//   type: typeof FETCH_POSTS;
-//   payload: {
-//     posts: PostInterface[];
-//   };
-// }
+// Fetch posts actions interfaces
 
-// export interface FetchOnePostInterface {
-//   type: typeof FETCH_POST;
-//   payload: {
-//     post: PostInterface;
-//   };
-// }
+export interface FetchPostsType {
+  type: typeof FETCH_POSTS;
+}
+
+export interface FetchPostsStartType {
+  type: typeof FETCH_POSTS_START;
+}
+
+export interface FetchPostsSuccessType {
+  type: typeof FETCH_POSTS_SUCCESS;
+  payload: {
+    posts: PostType[];
+  };
+}
+
+export interface FetchPostsErrorType {
+  type: typeof FETCH_POSTS_ERROR;
+  payload: {
+    error: {};
+  };
+}
+
+// Fetch one post actions interfaces
+
+export interface FetchOnePostType {
+  type: typeof FETCH_POST;
+  payload: {
+    id: number;
+  };
+}
+
+export interface FetchOnePostStartType {
+  type: typeof FETCH_POST_START;
+}
+
+export interface FetchOnePostSuccessType {
+  type: typeof FETCH_POST_SUCCESS;
+  payload: {
+    post: PostType;
+  };
+}
+
+export interface FetchOnePostErrorType {
+  type: typeof FETCH_POST_ERROR;
+  payload: {
+    error: {};
+  };
+}
+
+// Create post actions interfaces
+
+export interface CreatePostType {
+  type: typeof CREATE_POST;
+  payload: {
+    post: PostType;
+  };
+}
+
+export interface CreatePostStartType {
+  type: typeof CREATE_POST_START;
+}
+
+export interface CreatePostSuccessType {
+  type: typeof CREATE_POST_SUCCESS;
+}
+
+export interface CreatePostErrorType {
+  type: typeof CREATE_POST_ERROR;
+  payload: {
+    error: {};
+  };
+}

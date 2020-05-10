@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { StyledPostsList, Post, PostLink } from './PostsListStyles';
-import { PostInterface } from '../../redux/types';
+import { PostType } from '../../redux/types';
 
-interface PostsListProps {
-  posts: PostInterface[];
+interface PostsListPropsType {
+  posts: PostType[];
 }
 
-const PostsList = ({ posts }: PostsListProps): JSX.Element => {
+const PostsList = ({ posts }: PostsListPropsType): JSX.Element => {
   return (
     <StyledPostsList>
       {posts.map((post) => (

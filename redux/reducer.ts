@@ -1,15 +1,14 @@
 import { combineReducers } from 'redux';
 import * as types from './types';
 
-const postsReducer = (state = [], { type, payload }) => {
-  switch (type) {
+type postsActionType = types.FetchPostsSuccessType | types.FetchPostsErrorType;
+
+const postsReducer = (state = [], action: postsActionType): types.PostType[] => {
+  switch (action.type) {
     case types.FETCH_POSTS_SUCCESS:
-      return payload.posts;
-    case types.FETCH_POST_SUCCESS:
-      return payload.post;
+      return action.payload.posts;
 
     case types.FETCH_POSTS_ERROR:
-    case types.FETCH_POST_ERROR:
       return state;
 
     default:
@@ -17,10 +16,12 @@ const postsReducer = (state = [], { type, payload }) => {
   }
 };
 
-const openedPostReducer = (state = null, { type, payload }) => {
-  switch (type) {
+type postActionType = types.FetchOnePostSuccessType | types.FetchOnePostErrorType;
+
+const openedPostReducer = (state = null, action: postActionType): types.PostType => {
+  switch (action.type) {
     case types.FETCH_POST_SUCCESS:
-      return payload.post;
+      return action.payload.post;
 
     case types.FETCH_POST_ERROR:
       return state;
