@@ -40,3 +40,12 @@ export const SubmitButton = styled.button`
   box-shadow: 1px 1px 12px -6px #000;
   cursor: pointer;
 `;
+
+export const Message = styled.p`
+  text-align: center;
+`;
+
+export const AlertMessage = styled.p`
+  text-align: center;
+  color: red;
+`;
